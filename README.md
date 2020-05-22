@@ -20,7 +20,7 @@ You can clone this repository or download a zip file, build and run the Docker i
 
 ```
 $ docker build -t ocr-tesseract-docker .
-$ docker run -d -p 5000:5000 ocr-tesseract-docker
+$ docker run -p 5000:5000 ocr-tesseract-docker
 ```
 
 OR you can pull and/or run the Docker image from my repository on Docker Hub

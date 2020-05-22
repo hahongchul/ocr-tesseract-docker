@@ -1,14 +1,20 @@
-FROM ubuntu:latest
-MAINTAINER Rick Torzynski "ricktorzynski@gmail.com"
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
-RUN apt update && apt install -y libsm6 libxext6
-RUN apt-get -y install tesseract-ocr
-COPY . /app
-WORKDIR /app
-RUN pip install pillow
-RUN pip install pytesseract
-RUN pip install opencv-contrib-python
-RUN pip install -r requirements.txt
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+FROM ubuntu:18.04
+RUN apt-get update \
+    && apt-get install tesseract-ocr -y \
+    python3 \
+    #python-setuptools \
+    python3-pip \
+    && apt-get clean \
+    && apt-get autoremove
+
+
+ADD . /home/App
+WORKDIR /home/App
+COPY requirements.txt ./
+COPY . .
+
+RUN pip3 install -r requirements.txt
+
+VOLUME ["/data"]
+EXPOSE 5000 5000
+CMD ["python3" ,"app.py"]
