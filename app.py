@@ -6,9 +6,6 @@ from PIL import Image
 import pytesseract
 import argparse
 
-# import cv2
-
-__author__ = "Rick Torzynski <ricktorzynski@gmail.com>"
 __source__ = ""
 
 app = Flask(__name__)
@@ -39,11 +36,8 @@ def upload_file():
         filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
         f.save(filepath)
         text = pytesseract.image_to_string(Image.open(filepath))
+        return render_template("uploaded.html", displaytext=text, fname=filepath)
 
-        os.remove(filepath)
-
-        return render_template("uploaded.html", displaytext=text, fname=filename)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-
