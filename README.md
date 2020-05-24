@@ -8,7 +8,11 @@ $ docker build -t ocr-tesseract-docker .
 $ docker run -p 5000:5000 ocr-tesseract-docker
 ```
 
-Now navigate to localhost:5000 and upload an image for processing
+Now navigate to localhost:5000 and upload an image for processing.
+
+<p align="center">
+<img src="https://github.com/robmarkcole/ocr-tesseract-docker/blob/master/usage.png" width="800">
+</p>
 
 ## Acknowledgments
 This is a fork of https://github.com/ricktorzynski/ocr-tesseract-docker I made a couple of changes, such as dropping openCV and fixing the dockerfile
